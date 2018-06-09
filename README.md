@@ -62,6 +62,7 @@ Example typescript service class (services/article.service.ts):
 ``` javascript
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
 
 import {RestService, GenericResponse} from 'ng5-restful';
 import {Article} from '../models/article.model';
@@ -91,7 +92,7 @@ export class ArticleService extends RestService<Article, GenericResponse> {
     // Here you can override handleError method to perform specific actions when error is catched during HTTP request
     // duration. You could also forward error here and handle it when using this service in other components.
     public handleError(error: any): Observable<any> {
-        return Observable.throwError(error.message || error);
+        return throwError(error.message || error);
     }
     
     // Optionally, you can perform non-RESTful request using get() or post() methods

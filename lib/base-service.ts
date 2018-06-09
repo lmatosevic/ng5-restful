@@ -1,5 +1,5 @@
 import {HttpClient, HttpResponse, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 
 export abstract class BaseService {
@@ -40,7 +40,7 @@ export abstract class BaseService {
     }
 
     public handleError(error: any): Observable<any> {
-        return Observable.throw(error.message || error);
+        return throwError(error.message || error);
     }
 
     abstract getHttpClient(): HttpClient;
