@@ -1,4 +1,4 @@
-import {HttpHeaders, HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -8,7 +8,7 @@ import {BaseService} from './base-service';
 
 export abstract class RestService<T extends Serializable, E> extends BaseService {
     private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    private httpService: HttpClient;
+    protected httpService: HttpClient;
 
     constructor(httpService: HttpClient) {
         super(httpService);

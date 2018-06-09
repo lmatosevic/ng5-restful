@@ -4,32 +4,32 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 export class BaseService {
-    protected http: HttpClient;
+    protected httpService: HttpClient;
 
     constructor(httpService: HttpClient) {
-        this.http = httpService;
+        this.httpService = httpService;
     }
 
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
-        return this.http.get(path, this.generateRequestOptions(parameters, options))
+        return this.httpService.get(path, this.generateRequestOptions(parameters, options))
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public post<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.http.post(path, body, options)
+        return this.httpService.post(path, body, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public put<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.http.put(path, body, options)
+        return this.httpService.put(path, body, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public delete<E>(path: string, options: object = {}): Observable<E> {
-        return this.http.delete(path, options)
+        return this.httpService.delete(path, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
