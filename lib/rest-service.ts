@@ -8,12 +8,7 @@ import {BaseService} from './base-service';
 
 export abstract class RestService<T extends Serializable, E> extends BaseService {
     private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    protected httpService: HttpClient;
-
-    constructor(httpService: HttpClient) {
-        super(httpService);
-        this.httpService = httpService;
-    }
+    public httpService: HttpClient;
 
     public query(parameters: any, path: string = null): Observable<T[]> {
         let finalPath = path != null ? path : this.getBaseUrlPath();

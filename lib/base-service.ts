@@ -4,11 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 export class BaseService {
-    protected httpService: HttpClient;
-
-    constructor(httpService: HttpClient) {
-        this.httpService = httpService;
-    }
+    public httpService: HttpClient;
 
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
         return this.httpService.get(path, this.generateRequestOptions(parameters, options))
