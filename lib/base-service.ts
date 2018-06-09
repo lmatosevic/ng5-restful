@@ -1,7 +1,6 @@
 import {HttpClient, HttpResponse, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {map, catchError} from 'rxjs/operators';
 
 export abstract class BaseService {
     constructor() {
@@ -9,26 +8,22 @@ export abstract class BaseService {
 
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
         return this.getHttpClient().get(path, this.generateRequestOptions(parameters, options))
-            .map((response: HttpResponse<E>) => response)
-            .catch(this.handleError);
+            .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public post<E>(path: string, body: any, options: object = {}): Observable<E> {
         return this.getHttpClient().post(path, body, options)
-            .map((response: HttpResponse<E>) => response)
-            .catch(this.handleError);
+            .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public put<E>(path: string, body: any, options: object = {}): Observable<E> {
         return this.getHttpClient().put(path, body, options)
-            .map((response: HttpResponse<E>) => response)
-            .catch(this.handleError);
+            .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public delete<E>(path: string, options: object = {}): Observable<E> {
         return this.getHttpClient().delete(path, options)
-            .map((response: HttpResponse<E>) => response)
-            .catch(this.handleError);
+            .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public generateRequestOptions(parameters: any, options: object = {}): object {
