@@ -205,7 +205,7 @@ Complete overview of all available methods provided by RestService:
 
 _Parameters marked with * are optional._
 
-_Generic type <E> could be custom model class or you can use GenericResponse type already provided in this library_
+_Generic type \<E> could be custom model class or you can use GenericResponse type already provided in this library_
 
 License
 - 
