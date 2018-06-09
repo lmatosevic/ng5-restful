@@ -26,9 +26,9 @@
     "rest"
   ],
   "dependencies": {
-    "@angular/common": "^5.2.11",
-    "@angular/core": "^5.2.11",
-    "rxjs": "5.5.11"
+    "@angular/common": ">=5.2.11",
+    "@angular/core": ">=5.2.11",
+    "rxjs": "~5.5.11"
   },
   "devDependencies": {
     "@angular/compiler": "^5.2.11",
