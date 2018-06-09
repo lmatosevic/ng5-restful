@@ -31,7 +31,7 @@ export abstract class BaseService {
             .catch(this.handleError);
     }
 
-    public generateRequestOptions(parameters: any, options: object = {}): Object {
+    public generateRequestOptions(parameters: any, options: object = {}): object {
         if (!parameters) {
             return options;
         }

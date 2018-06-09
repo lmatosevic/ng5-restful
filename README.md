@@ -3,7 +3,12 @@
 
 This package is refactored [ng2-restful](https://github.com/Lujo5/ng2-restful) in a way to use and support newest Angular 5+ features.
 
-Minimum required version of @angular/core:>=5.2.11 and @angular/common:>=5.2.11
+Minimum required versions of dependencies:
+* `@angular/core`: `>=6.0.4`
+* `@angular/common`: `>=6.0.4`
+* `rxjs`: `>=6.2.0`
+* `rxjs-compat`: `>=6.2.0`
+* `typescript`: `~2.7.2`
 
 ## Instalation
 Install library into your project using Node package manager (NPM).
