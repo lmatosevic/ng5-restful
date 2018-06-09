@@ -9,11 +9,6 @@
     "declaration": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@angular/core": ["node_modules/@angular/core"],
-      "@angular/common": ["node_modules/@angular/common"],
-      "rxjs/*": ["node_modules/rxjs/*"]
-    },
     "lib": [
       "es2015",
       "dom"
