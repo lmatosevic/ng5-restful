@@ -204,6 +204,7 @@ Complete overview of all available methods provided by RestService:
 | deleteOne       | id: number, *path: string                       | DELETE       | Promise\<E>   |
 
 _Parameters marked with * are optional._
+
 _Generic type <E> could be custom model class or you can use GenericResponse type already provided in this library_
 
 License
