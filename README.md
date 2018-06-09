@@ -206,17 +206,17 @@ export class ArticleComponent implements OnInit {
 
 Complete overview of all available methods provided by RestService:
 
-| Service method  | Arguments                                       | HTTP method  | Return type   |
-|:----------------|:------------------------------------------------|:-------------|:--------------|
-| get             | path: string, parameters: any, *options: object | GET          | Promise\<E>   |
-| post            | path: string, body: any, *options: object       | POST         | Promise\<E>   |
-| put             | path: string, body: any, *options: object       | PUT          | Promise\<E>   |
-| delete          | path: string, *options: object                  | DELETE       | Promise\<E>   |
-| query           | parameters: any, *path: string                  | GET          | Promise\<T[]> |
-| getOne          | id: number, *path: string                       | GET          | Promise\<T>   |
-| createOne       | model: T, *path: string                         | POST         | Promise\<E>   |
-| updateOne       | model: T, *path: string                         | PUT          | Promise\<E>   |
-| deleteOne       | id: number, *path: string                       | DELETE       | Promise\<E>   |
+| Service method  | Arguments                                       | HTTP method  | Return type      |
+|:----------------|:------------------------------------------------|:-------------|:-----------------|
+| get             | path: string, parameters: any, *options: object | GET          | Observable\<E>   |
+| post            | path: string, body: any, *options: object       | POST         | Observable\<E>   |
+| put             | path: string, body: any, *options: object       | PUT          | Observable\<E>   |
+| delete          | path: string, *options: object                  | DELETE       | Observable\<E>   |
+| query           | parameters: any, *path: string                  | GET          | Observable\<T[]> |
+| getOne          | id: number, *path: string                       | GET          | Observable\<T>   |
+| createOne       | model: T, *path: string                         | POST         | Observable\<E>   |
+| updateOne       | model: T, *path: string                         | PUT          | Observable\<E>   |
+| deleteOne       | id: number, *path: string                       | DELETE       | Observable\<E>   |
 
 _Parameters marked with * are optional._
 
