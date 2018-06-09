@@ -19,9 +19,9 @@ npm install ng5-restful --save
 
 ## Usage
 This library **does not** contains an Angular5 module with exported components and service, but instead, provides two classes and one interface:
-* **RestService\<T extends Serializable\<T>>** - an abstract class which your services need to extend in order to use provided REST methods
+* **RestService\<T extends Serializable>** - an abstract class which your services need to extend in order to use provided REST methods
 * **GenericResponse** - model class that can be returned from custom GET and POST requests performed from RestService (can be replaced with custom model)
-* **Serializable\<T>** - interface which your model classes need to implement in order to be automatically serialized when sent from REST API
+* **Serializable** - interface which your model classes need to implement in order to be automatically serialized when sent from REST API
 
 Using this RESTful pattern classes allows you to follow best practices for transferring and mapping entity objects from server to your client application. 
 And also, provides a level of consistency to your Angular2 application.
@@ -29,7 +29,8 @@ And also, provides a level of consistency to your Angular2 application.
 ### Creating model
 Model classes, which represents resource from your REST API need to implement _Serializable_ interface and it's method:
 * **serialize(): string** - transforms current state of model object to JSON object
-Deserialization will be handled by Angular5 HTTP request library.
+
+Deserialization will be handled by Angular5 `HttpClient` request library.
 
 Exmaple typescript model class (models/article.model.ts):
 ``` javascript
@@ -207,17 +208,17 @@ export class ArticleComponent implements OnInit {
 
 Complete overview of all available methods provided by RestService:
 
-| Service method  | Arguments                                       | HTTP method  | Return type      |
-|:----------------|:------------------------------------------------|:-------------|:-----------------|
-| get             | path: string, parameters: any, *options: object | GET          | Observable\<E>   |
-| post            | path: string, body: any, *options: object       | POST         | Observable\<E>   |
-| put             | path: string, body: any, *options: object       | PUT          | Observable\<E>   |
-| delete          | path: string, *options: object                  | DELETE       | Observable\<E>   |
-| query           | parameters: any, *path: string                  | GET          | Observable\<T[]> |
-| getOne          | id: number, *path: string                       | GET          | Observable\<T>   |
-| createOne       | model: T, *path: string                         | POST         | Observable\<E>   |
-| updateOne       | model: T, *path: string                         | PUT          | Observable\<E>   |
-| deleteOne       | id: number, *path: string                       | DELETE       | Observable\<E>   |
+| Service method  | Arguments                                        | HTTP method  | Return type      |
+|:----------------|:-------------------------------------------------|:-------------|:-----------------|
+| get             | path: string, parameters: any, *options: object  | GET          | Observable\<E>   |
+| post            | path: string, body: any, *options: object        | POST         | Observable\<E>   |
+| put             | path: string, body: any, *options: object        | PUT          | Observable\<E>   |
+| delete          | path: string, *options: object                   | DELETE       | Observable\<E>   |
+| query           | parameters: any, *options: object, *path: string | GET          | Observable\<T[]> |
+| getOne          | id: number, *options: object, *path: string      | GET          | Observable\<T>   |
+| createOne       | model: T, *options: object, *path: string        | POST         | Observable\<E>   |
+| updateOne       | model: T, *options: object, *path: string        | PUT          | Observable\<E>   |
+| deleteOne       | id: number, *options: object, *path: string      | DELETE       | Observable\<E>   |
 
 _Parameters marked with * are optional._
 
