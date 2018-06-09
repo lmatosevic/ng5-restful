@@ -3,6 +3,8 @@
 
 This package is refactored [ng2-restful](https://github.com/Lujo5/ng2-restful) in a way to use and support newest Angular 5+ features.
 
+Minimum required version of @angular/core:>=5.2.11 and @angular/common:>=5.2.11
+
 ## Instalation
 Install library into your project using Node package manager (NPM).
 
@@ -56,8 +58,7 @@ Example typescript service class (services/article.service.ts):
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {RestService} from 'ng5-restful';
-import {GenericResponse} from 'ng5-restful';
+import {RestService, GenericResponse} from 'ng5-restful';
 import {Article} from '../models/article.model';
 
 @Injectable()
@@ -122,10 +123,11 @@ export class GenericResponse implements Serializable {
 To use your newly created and implemented service, just inject service into the angular2 @Component's constructor 
 and use it as follows:
 ``` javascript
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
+import {GenericResponse} from 'ng5-restful';
 
-import {ArticleService} from "../services/article.service";
-import {Article} from "../models/article.model";
+import {ArticleService} from '../services/article.service';
+import {Article} from '../models/article.model';
 
 @Component({
     moduleId: module.id,
