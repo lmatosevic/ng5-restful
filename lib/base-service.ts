@@ -3,32 +3,30 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-export class BaseService {
-    public http: HttpClient;
-
+export abstract class BaseService {
     constructor() {
     }
 
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
-        return this.http.get(path, this.generateRequestOptions(parameters, options))
+        return this.getHttpClient().get(path, this.generateRequestOptions(parameters, options))
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public post<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.http.post(path, body, options)
+        return this.getHttpClient().post(path, body, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public put<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.http.put(path, body, options)
+        return this.getHttpClient().put(path, body, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
 
     public delete<E>(path: string, options: object = {}): Observable<E> {
-        return this.http.delete(path, options)
+        return this.getHttpClient().delete(path, options)
             .map((response: HttpResponse<E>) => response)
             .catch(this.handleError);
     }
@@ -49,4 +47,6 @@ export class BaseService {
     public handleError(error: any): Observable<any> {
         return Observable.throw(error.message || error);
     }
+
+    abstract getHttpClient(): HttpClient;
 }

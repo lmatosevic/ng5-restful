@@ -49,7 +49,7 @@ export class Article implements Serializable {
 ### Implementing service
 When model class is implemented, then REST service for that particular resource (model) can be created. 
 Create new class as service with Angular2 annotation @Injectable() which extends RestService, then create constructor 
-and implement abstract method getBaseUrlPath(): string.
+and implement abstract methods getBaseUrlPath(): string and getHttpClient(): HttpClient.
 
 Example typescript service class (services/article.service.ts):
 ``` javascript
@@ -63,16 +63,23 @@ import {Article} from '../models/article.model';
 @Injectable()
 export class ArticleService extends RestService<Article, GenericResponse> {
 
-    // Injected HttpClient must be public and named 'http'
-    constructor(public http: HttpClient) {
+    // Injected HttpClient must be provided in implemented method getHttpClient()
+    constructor(private http: HttpClient) {
         super();
     }
-    
+
+    // Override this method.
     // This is relative url path on the same host as the angular2 application is served.
     // You can also use full URL path like: http://my.api.com:8080/articles , just make sure
     // that Cross-Origin requests are allowed on that API server.
     getBaseUrlPath(): string {
         return 'api/articles'; 
+    }
+
+    // Override this method.
+    // Provide the HttpClient to the parent class.
+    getHttpClient(): HttpClient {
+        return this.http;
     }
 
     // Here you can override handleError method to perform specific actions when error is catched during HTTP request
