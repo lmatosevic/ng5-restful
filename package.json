@@ -1,6 +1,6 @@
 {
   "name": "ng5-restful",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Angular 5+ module for connecting with RESTful API.",
   "author": "Luka",
   "license": "MIT",
