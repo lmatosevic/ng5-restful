@@ -4,5 +4,6 @@ export const PATH_DIST = "dist/";
 export const EXTERNAL_LIBS = [
     '@angular/core',
     '@angular/common',
-    'rxjs'
+    'rxjs',
+    'rxjs-compat'
 ];
