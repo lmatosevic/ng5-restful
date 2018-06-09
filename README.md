@@ -64,7 +64,7 @@ import {Article} from '../models/article.model';
 export class ArticleService extends RestService<Article, GenericResponse> {
 
     constructor(private http: HttpClient) {
-        super(http, Article);
+        super(http);
     }
     
     // This is relative url path on the same host as the angular2 application is served.
