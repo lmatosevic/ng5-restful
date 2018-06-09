@@ -4,9 +4,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 export class BaseService {
-    protected httpService: HttpClient;
 
-    constructor(httpService: HttpClient) {
+    constructor(protected httpService: HttpClient) {
         this.httpService = httpService;
     }
 

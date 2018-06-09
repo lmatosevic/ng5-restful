@@ -7,12 +7,10 @@ import {Serializable} from './serializable';
 import {BaseService} from './base-service';
 
 export abstract class RestService<T extends Serializable, E> extends BaseService {
-    protected httpService: HttpClient;
     private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-    constructor(httpService: HttpClient) {
+    constructor(protected httpService: HttpClient) {
         super(httpService);
-        this.httpService = httpService;
     }
 
     public query(parameters: any, path: string = null): Observable<T[]> {
