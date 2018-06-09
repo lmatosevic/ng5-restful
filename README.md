@@ -63,8 +63,9 @@ import {Article} from '../models/article.model';
 @Injectable()
 export class ArticleService extends RestService<Article, GenericResponse> {
 
-    constructor(private http: HttpClient) {
-        super(http);
+    // Injected HttpClient must be public and named 'http'
+    constructor(public http: HttpClient) {
+        super();
     }
     
     // This is relative url path on the same host as the angular2 application is served.

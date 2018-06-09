@@ -10,6 +10,10 @@ export abstract class RestService<T extends Serializable, E> extends BaseService
     private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     public http: HttpClient;
 
+    constructor(){
+        super();
+    }
+
     public query(parameters: any, path: string = null): Observable<T[]> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         return this.http.get(finalPath, this.generateRequestOptions(parameters, {}))

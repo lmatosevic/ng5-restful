@@ -6,6 +6,9 @@ import 'rxjs/add/operator/catch';
 export class BaseService {
     public http: HttpClient;
 
+    constructor() {
+    }
+
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
         return this.http.get(path, this.generateRequestOptions(parameters, options))
             .map((response: HttpResponse<E>) => response)
