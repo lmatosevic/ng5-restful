@@ -91,7 +91,7 @@ export class ArticleService extends RestService<Article, GenericResponse> {
     // Here you can override handleError method to perform specific actions when error is catched during HTTP request
     // duration. You could also forward error here and handle it when using this service in other components.
     public handleError(error: any): Observable<any> {
-        return Observable.throw(error.message || error);
+        return Observable.throwError(error.message || error);
     }
     
     // Optionally, you can perform non-RESTful request using get() or post() methods
