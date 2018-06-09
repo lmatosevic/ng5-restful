@@ -21,7 +21,7 @@
     "outDir": "./dist"
   },
   "files": [
-    "./lib/ng5-restful.ts"
+    "./lib/ng5restful.ts"
   ],
   "angularCompilerOptions": {
     "strictMetadataEmit": true

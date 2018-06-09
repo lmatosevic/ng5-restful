@@ -15,6 +15,14 @@ export default {
         format: 'umd',
         file: PATH_DIST + nameLibrary + ".umd.js"
     },
+    globals: {
+        '@angular/core': 'ng.core',
+        '@angular/common': 'ng.common',
+        'rxjs/Observable': 'Rx',
+        'rxjs/add/operator/map': 'Rx.Observable.prototype',
+        'rxjs/add/operator/catch': 'Rx.Observable.prototype',
+        'rxjs/add/observable/of': 'Rx.Observable'
+    },
     plugins: [
         angular(
             {
