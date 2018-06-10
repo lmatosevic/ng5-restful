@@ -4,11 +4,9 @@
 This package is refactored [ng2-restful](https://github.com/Lujo5/ng2-restful) in a way to use and support newest Angular 5+ features.
 
 Minimum required versions of dependencies:
-* `@angular/core`: `>=6.0.4`
-* `@angular/common`: `>=6.0.4`
-* `rxjs`: `>=6.2.0`
-* `rxjs-compat`: `>=6.2.0`
-* `typescript`: `~2.7.2`
+* `@angular/core`: `>=5.2.11`
+* `@angular/common`: `>=5.2.11`
+* `rxjs`: `>=5.5.11`
 
 ## Instalation
 Install library into your project using Node package manager (NPM).
@@ -73,7 +71,7 @@ export class ArticleService extends RestService<Article, GenericResponse> {
 
     // Injected HttpClient must be provided in implemented method getHttpClient()
     constructor(private http: HttpClient) {
-        super();
+        super(http);
     }
 
     // Override this method.
@@ -82,12 +80,6 @@ export class ArticleService extends RestService<Article, GenericResponse> {
     // that Cross-Origin requests are allowed on that API server.
     getBaseUrlPath(): string {
         return 'api/articles'; 
-    }
-
-    // Override this method.
-    // Provide the HttpClient to the parent class.
-    getHttpClient(): HttpClient {
-        return this.http;
     }
 
     // Here you can override handleError method to perform specific actions when error is catched during HTTP request

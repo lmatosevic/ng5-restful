@@ -3,26 +3,29 @@ import {Observable, throwError} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 
 export abstract class BaseService {
-    constructor() {
+    protected http: HttpClient;
+
+    constructor(http: HttpClient) {
+        this.http = http;
     }
 
     public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
-        return this.getHttpClient().get(path, this.generateRequestOptions(parameters, options))
+        return this.http.get(path, this.generateRequestOptions(parameters, options))
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public post<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.getHttpClient().post(path, body, options)
+        return this.http.post(path, body, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public put<E>(path: string, body: any, options: object = {}): Observable<E> {
-        return this.getHttpClient().put(path, body, options)
+        return this.http.put(path, body, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
     public delete<E>(path: string, options: object = {}): Observable<E> {
-        return this.getHttpClient().delete(path, options)
+        return this.http.delete(path, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
@@ -42,6 +45,4 @@ export abstract class BaseService {
     public handleError(error: any): Observable<any> {
         return throwError(error.message || error);
     }
-
-    abstract getHttpClient(): HttpClient;
 }
