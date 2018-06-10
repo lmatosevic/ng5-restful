@@ -69,8 +69,8 @@ import {Article} from '../models/article.model';
 @Injectable()
 export class ArticleService extends RestService<Article, GenericResponse> {
 
-    // Injected HttpClient must be provided in implemented method getHttpClient()
-    constructor(private http: HttpClient) {
+    // Injected HttpClient must be protected visibility
+    constructor(protected http: HttpClient) {
         super(http);
     }
 
