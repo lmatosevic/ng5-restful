@@ -9,27 +9,27 @@ export abstract class BaseService {
         this.http = http;
     }
 
-    public get<E>(path: string, parameters: any = {}, options: object = {}): Observable<E> {
+    public get<E>(path: string, parameters: any = {}, options: Object = {}): Observable<E> {
         return this.http.get(path, this.generateRequestOptions(parameters, options))
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public post<E>(path: string, body: any, options: object = {}): Observable<E> {
+    public post<E>(path: string, body: any, options: Object = {}): Observable<E> {
         return this.http.post(path, body, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public put<E>(path: string, body: any, options: object = {}): Observable<E> {
+    public put<E>(path: string, body: any, options: Object = {}): Observable<E> {
         return this.http.put(path, body, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public delete<E>(path: string, options: object = {}): Observable<E> {
+    public delete<E>(path: string, options: Object = {}): Observable<E> {
         return this.http.delete(path, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public generateRequestOptions(parameters: any, options: object = {}): object {
+    public generateRequestOptions(parameters: any, options: any = {}): Object {
         if (!parameters) {
             return options;
         }

@@ -14,32 +14,32 @@ export abstract class RestService<T extends Serializable, E extends Serializable
         this.http = http;
     }
 
-    public query(parameters: any, options: object = {}, path: string = null): Observable<T[]> {
+    public query(parameters: any, options: any = {}, path: string = null): Observable<T[]> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         return this.http.get(finalPath, this.generateRequestOptions(parameters, options))
             .pipe(map((response: HttpResponse<T[]>) => response), catchError(this.handleError));
     }
 
-    public getOne(id: number, options: object = {}, path: string = null): Observable<T> {
+    public getOne(id: number, options: Object = {}, path: string = null): Observable<T> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         const url = finalPath + (id != null ? '/' + id : '');
         return this.http.get(url, options)
             .pipe(map((response: HttpResponse<T>) => response), catchError(this.handleError));
     }
 
-    public createOne(model: T, options: object = {headers: this.headers}, path: string = null): Observable<E> {
+    public createOne(model: T, options: Object = {headers: this.headers}, path: string = null): Observable<E> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         return this.http.post(finalPath, model.serialize(), options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public updateOne(model: T, options: object = {headers: this.headers}, path: string = null): Observable<E> {
+    public updateOne(model: T, options: Object = {headers: this.headers}, path: string = null): Observable<E> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         return this.http.put(finalPath, model.serialize(), options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
-    public deleteOne(id: number, options: object = {headers: this.headers}, path: string = null): Observable<E> {
+    public deleteOne(id: number, options: Object = {headers: this.headers}, path: string = null): Observable<E> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         const url = finalPath + (id != null ? '/' + id : '');
         return this.http.delete(url, options)
