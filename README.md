@@ -148,7 +148,7 @@ export class ArticleComponent implements OnInit {
         });
         
         // Query articles with URL parameters
-        this.articleService.query({typeId: 3, page: 1, limit: 10}).subscribe((articles: Article[]) => {
+        this.articleService.query({params: {typeId: 3, page: 1, limit: 10}}).subscribe((articles: Article[]) => {
             this.articles = articles;
         });
         
