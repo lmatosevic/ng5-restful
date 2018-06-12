@@ -200,17 +200,17 @@ export class ArticleComponent implements OnInit {
 
 Complete overview of all available methods provided by RestService:
 
-| Service method  | Arguments                                        | HTTP method  | Return type      |
-|:----------------|:-------------------------------------------------|:-------------|:-----------------|
-| get             | path: string, parameters: any, *options: object  | GET          | Observable\<E>   |
-| post            | path: string, body: any, *options: object        | POST         | Observable\<E>   |
-| put             | path: string, body: any, *options: object        | PUT          | Observable\<E>   |
-| delete          | path: string, *options: object                   | DELETE       | Observable\<E>   |
-| query           | parameters: any, *options: object, *path: string | GET          | Observable\<T[]> |
-| getOne          | id: number, *options: object, *path: string      | GET          | Observable\<T>   |
-| createOne       | model: T, *options: object, *path: string        | POST         | Observable\<E>   |
-| updateOne       | model: T, *options: object, *path: string        | PUT          | Observable\<E>   |
-| deleteOne       | id: number, *options: object, *path: string      | DELETE       | Observable\<E>   |
+| Service method  | Arguments                                        | HTTP method | Return type      |
+|:----------------|:-------------------------------------------------|:------------|:-----------------|
+| get             | path: string, *options: object                   | GET         | Observable\<E>   |
+| post            | path: string, body: any, *options: object        | POST        | Observable\<E>   |
+| put             | path: string, body: any, *options: object        | PUT         | Observable\<E>   |
+| delete          | path: string, *options: object                   | DELETE      | Observable\<E>   |
+| query           | *options: object, *path: string                  | GET         | Observable\<T[]> |
+| getOne          | id: number, *options: object, *path: string      | GET         | Observable\<T>   |
+| createOne       | model: T, *options: object, *path: string        | POST        | Observable\<E>   |
+| updateOne       | model: T, *options: object, *path: string        | PUT         | Observable\<E>   |
+| deleteOne       | id: number, *options: object, *path: string      | DELETE      | Observable\<E>   |
 
 _Parameters marked with * are optional._
 

@@ -14,9 +14,9 @@ export abstract class RestService<T extends Serializable, E extends Serializable
         this.http = http;
     }
 
-    public query(parameters: any, options: any = {}, path: string = null): Observable<T[]> {
+    public query(options: Object = {}, path: string = null): Observable<T[]> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
-        return this.http.get(finalPath, this.generateRequestOptions(parameters, options))
+        return this.http.get(finalPath, options)
             .pipe(map((response: HttpResponse<T[]>) => response), catchError(this.handleError));
     }
 

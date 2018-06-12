@@ -1,4 +1,4 @@
-import {HttpClient, HttpResponse, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 
@@ -9,8 +9,8 @@ export abstract class BaseService {
         this.http = http;
     }
 
-    public get<E>(path: string, parameters: any = {}, options: Object = {}): Observable<E> {
-        return this.http.get(path, this.generateRequestOptions(parameters, options))
+    public get<E>(path: string, options: Object = {}): Observable<E> {
+        return this.http.get(path, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
@@ -27,14 +27,6 @@ export abstract class BaseService {
     public delete<E>(path: string, options: Object = {}): Observable<E> {
         return this.http.delete(path, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
-    }
-
-    public generateRequestOptions(parameters: any, options: any = {}): Object {
-        if (!parameters) {
-            return options;
-        }
-        options['params'] = new HttpParams({fromObject: parameters});
-        return options;
     }
 
     public handleError(error: any): Observable<any> {
