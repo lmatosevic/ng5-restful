@@ -33,12 +33,7 @@ export abstract class BaseService {
         if (!parameters) {
             return options;
         }
-
-        let params = new HttpParams();
-        Object.keys(parameters).forEach(key => {
-            params.set(key, parameters[key]);
-        });
-        options['params'] = params;
+        options['params'] = new HttpParams({fromObject: parameters});
         return options;
     }
 
