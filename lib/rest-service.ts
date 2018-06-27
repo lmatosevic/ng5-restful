@@ -20,6 +20,10 @@ export abstract class RestService<T extends Serializable, E extends Serializable
             .pipe(map((response: HttpResponse<T[]>) => response), catchError(this.handleError));
     }
 
+    public getAll(path: string = null): Observable<T[]> {
+        return this.query({}, path);
+    }
+
     public getOne(id: number, options: Object = {}, path: string = null): Observable<T> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
         const url = finalPath + (id != null ? '/' + id : '');

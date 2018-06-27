@@ -142,8 +142,8 @@ export class ArticleComponent implements OnInit {
     }
     
     ngOnInit(): void {
-        // Get all articles with empty parameters list
-        this.articleService.query({}).subscribe((articles: Article[]) => {
+        // Get all articles
+        this.articleService.getAll().subscribe((articles: Article[]) => {
             this.articles = articles;
         });
         
@@ -207,6 +207,7 @@ Complete overview of all available methods provided by RestService:
 | put             | path: string, body: any, *options: object        | PUT         | Observable\<E>   |
 | delete          | path: string, *options: object                   | DELETE      | Observable\<E>   |
 | query           | *options: object, *path: string                  | GET         | Observable\<T[]> |
+| getAll          | *path: string                                    | GET         | Observable\<T[]> |
 | getOne          | id: number, *options: object, *path: string      | GET         | Observable\<T>   |
 | createOne       | model: T, *options: object, *path: string        | POST        | Observable\<E>   |
 | updateOne       | model: T, *options: object, *path: string        | PUT         | Observable\<E>   |
