@@ -17,7 +17,7 @@ npm install ng5-restful --save
 
 ## Usage
 This library **does not** contains an Angular5 module with exported components and service, but instead, provides two classes and one interface:
-* **RestService\<T extends Serializable>** - an abstract class which your services need to extend in order to use provided REST methods
+* **RestService\<T, E>** - an abstract class which your services need to extend in order to use provided REST methods
 * **GenericResponse** - model class that can be returned from custom GET and POST requests performed from RestService (can be replaced with custom model)
 * **Serializable** - interface which your model classes need to implement in order to be automatically serialized when sent from REST API
 
@@ -26,7 +26,7 @@ And also, provides a level of consistency to your Angular2 application.
 
 ### Creating model
 Model classes, which represents resource from your REST API need to implement _Serializable_ interface and it's method:
-* **serialize(): string** - transforms current state of model object to JSON object
+* **serialize(): string** - transforms current state of model object to JSON object (DEPRECATED since v3.2.0)
 
 Deserialization will be handled by Angular5 `HttpClient` request library.
 
@@ -44,6 +44,7 @@ export class Article implements Serializable {
     created: Date;
     updated: Date;
 
+    // Can be empty function since it is deprecated from version 3.2.0
     serialize(): string {
         return JSON.stringify(this, (key, value) => {
             return value;
@@ -112,6 +113,7 @@ export class GenericResponse implements Serializable {
     description: string;
     data: Map<string, string> = new Map();
 
+    // Deprecated since v3.2.0
     serialize(): string {
         return JSON.stringify(this);
     }
