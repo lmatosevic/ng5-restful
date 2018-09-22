@@ -37,7 +37,8 @@ export abstract class RestService<T, E> extends BaseService {
 
     public updateOne(model: T, options: Object = {headers: this.headers}, path: string = null): Observable<E> {
         let finalPath = path != null ? path : this.getBaseUrlPath();
-        return this.http.put(finalPath, model, options)
+        const url = finalPath + (model['id'] != null ? '/' + model['id'] : '');
+        return this.http.put(url, model, options)
             .pipe(map((response: HttpResponse<E>) => response), catchError(this.handleError));
     }
 
