@@ -1,7 +1,9 @@
 # ng5-restful
 > Angular 5+ library for connecting with RESTful API.
 
-This package is refactored [ng2-restful](https://github.com/Lujo5/ng2-restful) in a way to use and support newest Angular 5+ features.
+> **`ng5-restful` is deprecated**. Please switch to the [ngx-restful](https://github.com/lmatosevic/ngx-restful)
+
+This package is refactored [ng2-restful](https://github.com/lmatosevic/ng2-restful) in a way to use and support newest Angular 5+ features.
 
 Minimum required versions of dependencies:
 * `@angular/core`: `>=5.2.11`
